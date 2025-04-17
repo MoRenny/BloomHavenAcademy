@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipe Finder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #recipe-details {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="jumbotron text-center">
+            <h1>Food Recipe Finder</h1>
+            <div class="input-group mb-3">
+                <input type="text" id="food-search" class="form-control" placeholder="Search for a food...">
+                <div class="input-group-append">
+                    <button id="search-btn" class="btn btn-primary" type="button" >Search</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="recipe-details" class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img id="recipe-image" src="" class="card-img" alt="Recipe Image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 id="recipe-name" class="card-title"></h2>
+                        <p class="card-text"><strong>Category:</strong> <span id="recipe-category">food</span></p>
+                        <p class="card-text"><strong>Area:</strong> <span id="recipe-area"></span></p>
+                        <p class="card-text"><strong>Instructions:</strong> <span id="recipe-instructions"></span></p>
+                        <p class="card-text"><strong>Ingredients:</strong> <span id="recipe-ingredients"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script (2).js"></script>
+</body>
+</html>
