@@ -119,6 +119,6 @@ function updateContent() {
 
 document.addEventListener("DOMContentLoaded", () => {
   updateContent();
-  setInterval(updateContent, 7000);
+  setInterval(updateContent, 6000);
 });
 
