@@ -76,7 +76,7 @@ function typeWriter(text, element, speed = 80, callback) {
   element.textContent = "";
   let i = 0;
 
-  // Cancel previous typing interval if exists
+  
   if (element.typingInterval) {
     clearTimeout(element.typingInterval);
   }
@@ -96,27 +96,27 @@ function typeWriter(text, element, speed = 80, callback) {
 function updateContent() {
   const { title, description, image, buttonText, link } = roles[currentIndex];
 
-  // Update image with fade effect
+  
   profileImg.classList.add("fade-out");
   setTimeout(() => {
     profileImg.src = image;
     profileImg.classList.remove("fade-out");
   }, 600);
 
-  // Update role text with typewriter effect
+  
   typeWriter(title, roleText);
 
-  // Update description
+
   descText.textContent = description;
 
-  // Update button
+ 
   roleLinkBtn.textContent = buttonText;
   roleLinkBtn.href = link;
 
   currentIndex = (currentIndex + 1) % roles.length;
 }
 
-// Wait until the page is ready
+
 document.addEventListener("DOMContentLoaded", () => {
   updateContent();
   setInterval(updateContent, 7000);

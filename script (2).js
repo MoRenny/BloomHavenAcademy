@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Fetch the recipe data from the API
+ 
   async function fetchRecipe(query) {
     const apiURL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
     const response = await fetch(apiURL);
@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
     return data.meals ? data.meals[0] : null;
   }
 
-  // Display recipe details in the UI
+  
   function displayRecipe(meal) {
     const ingredientsList = getIngredients(meal);
 
-    // Update UI with recipe details
+    
     recipeImage.src = meal.strMealThumb;
     recipeName.textContent = meal.strMeal;
     recipeCategory.textContent = meal.strCategory;
@@ -111,11 +111,11 @@ document.addEventListener("DOMContentLoaded", function () {
     recipeInstructions.textContent = meal.strInstructions;
     recipeIngredients.innerHTML = `<ul>${ingredientsList}</ul>`;
 
-    // Show the recipe details card
+   
     recipeDetails.style.display = "block";
   }
 
-  // Extract ingredients and measurements from the API response
+  // to extract ingredients and measurements from the API response
   function getIngredients(meal) {
     let ingredients = "";
     for (let i = 1; i <= 20; i++) {
