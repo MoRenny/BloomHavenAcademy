@@ -37,7 +37,7 @@ const roles = [
       "I love nurturing young minds and creating meaningful learning experiences. Currently, I run Bloom Haven Academy, a school where a child can get the opportunity to fully explore his/her full potentials. You can learn more about Bloom Haven by clicking on the link below.",
     image: "BI200136.jpg",
     buttonText: "Check out Bloom Haven Academy",
-    link: "http://127.0.0.1:5502/index.html",
+    link: "index.html",
   },
   {
     title: "also a Singer",
@@ -61,7 +61,7 @@ const roles = [
       "Engineering challenges me to think logically, solve problems, and innovate constantly. I enjoy breaking down complex systems and rebuilding them into smarter, more efficient solutions. Whether it’s designing systems, improving infrastructure, or working on sustainable projects, I’m driven by the desire to create a better future through technology.",
     image: "engineer.jpg",
     buttonText: "View My Projects",
-    link: "http://127.0.0.1:5502/port.html",
+    link: "port.html",
   },
 ];
 
