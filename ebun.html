@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nandhu Dharna - Dynamic Hero</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #0a0a0a;
+      overflow-x: hidden;
+      transition: background-color 1s ease;
+    }
+
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: inherit;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .nav-left, .nav-year {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #0a0a0a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-right {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: inherit;
+        padding: 1rem;
+      }
+
+      .nav-right.show {
+        display: flex;
+      }
+    }
+
+    main {
+      min-height: 100vh;
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2rem;
+      padding: 2rem;
+      transition: all 0.6s ease;
+    }
+
+    .intro-text {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .name-text {
+      font-size: 4rem;
+      font-weight: 900;
+    }
+
+    .bio {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #333;
+      height: 1.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.1em solid #333;
+      animation: blink-caret 0.8s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #333 }
+    }
+
+    .profile-img img {
+      width: 350px;
+      max-width: 90vw;
+      border-radius: 12px;
+      transition: transform 0.6s ease, opacity 0.4s ease;
+    }
+
+    .action-button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #0a0a0a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .action-button:hover {
+      animation: bounce 0.4s ease;
+      background-color: #333;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .intro-text { font-size: 2rem; }
+      .name-text { font-size: 3rem; }
+      .bio { font-size: 1rem; }
+      .profile-img img { width: 250px; }
+    }
+
+    @media (max-width: 480px) {
+      .intro-text { font-size: 1.6rem; }
+      .name-text { font-size: 2.2rem; }
+      .bio { font-size: 0.95rem; }
+      .profile-img img { width: 200px; }
+    }
+  </style>
+</head>
+<body id="body">
+
+  <header>
+    <div class="nav-left">NANDHU ©</div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <nav class="nav-right" id="mobileMenu">
+      <a href="#work" class="nav-link">WORK</a>
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#services" class="nav-link">SERVICES</a>
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </nav>
+    <div class="nav-year">© 2025</div>
+  </header>
+
+  <main id="work">
+    <div class="text-container">
+      <div class="intro-text">HI! THERE, I'M</div>
+      <div class="name-text">NANDHU DHARNA</div>
+      <p class="bio" id="bioText"></p>
+    </div>
+    <div class="profile-img">
+      <img id="profileImg" src="" alt="Profile image">
+    </div>
+    <a href="#" class="action-button" id="bioLink">Learn More</a>
+  </main>
+
+  <!-- Typing sound -->
+  <audio id="typeSound" src="https://assets.mixkit.co/sfx/download/mixkit-typewriter-soft-1362.wav" preload="auto"></audio>
+
+  <script>
+    const roles = [
+      {
+        text: "I am an engineer.",
+        image: "https://images.unsplash.com/photo-1581091012184-5c61f336e8f7?auto=format&fit=crop&w=800&q=80",
+        link: "engineer.html",
+        color: "#EAE6DB"
+      },
+      {
+        text: "I am a violinist.",
+        image: "https://images.unsplash.com/photo-1511376777868-611b54f68947?auto=format&fit=crop&w=800&q=80",
+        link: "violinist.html",
+        color: "#FCEADE"
+      },
+      {
+        text: "I am a designer.",
+        image: "https://images.unsplash.com/photo-1611078489935-0cb9649c1eaa?auto=format&fit=crop&w=800&q=80",
+        link: "designer.html",
+        color: "#E0F7FA"
+      },
+      {
+        text: "I am a teacher.",
+        image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80",
+        link: "teacher.html",
+        color: "#F9EBEA"
+      }
+    ];
+
+    let index = 0;
+    const bioText = document.getElementById('bioText');
+    const profileImg = document.getElementById('profileImg');
+    const bioLink = document.getElementById('bioLink');
+    const body = document.getElementById('body');
+    const typeSound = document.getElementById('typeSound');
+
+    function typeText(text, callback) {
+      bioText.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        bioText.textContent += text.charAt(i);
+        typeSound.currentTime = 0;
+        typeSound.play().catch(() => {});
+        i++;
+        if (i === text.length) {
+          clearInterval(interval);
+          if (callback) callback();
+        }
+      }, 80);
+    }
+
+    function updateContent() {
+      index = (index + 1) % roles.length;
+      const role = roles[index];
+
+      body.style.backgroundColor = role.color;
+      profileImg.style.opacity = 0;
+
+      setTimeout(() => {
+        profileImg.src = role.image;
+        profileImg.style.opacity = 1;
+        bioLink.href = role.link;
+        typeText(role.text);
+      }, 400);
+    }
+
+    // Initial setup
+    window.onload = () => {
+      const role = roles[0];
+      body.style.backgroundColor = role.color;
+      profileImg.src = role.image;
+      bioLink.href = role.link;
+      typeText(role.text);
+    };
+
+    setInterval(updateContent, 10000);
+
+    // Hamburger toggle
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

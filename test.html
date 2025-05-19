@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Gradient Heading */
+.gradient-text {
+  background: linear-gradient(90deg, #7b2cbf, #9d4edd, #e0aaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Card hover effect */
+.course-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Learn More link hover */
+.learn-link {
+  font-weight: bold;
+  color: #7b2cbf;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.learn-link:hover {
+  color: #5a189a;
+  text-decoration: underline;
+}
+
+/* Optional image responsiveness */
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+    </style>
+</head>
+<body>
+    <section class="py-5 bg-light" id="courses">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fs-1 fw-bold gradient-text">Our Courses</h2>
+      <p class="lead text-muted">Check out our different programs designed to inspire and educate.</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- STEM -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 course-card border-0 shadow-sm">
+          <img src="DSC_8923.JPG" class="card-img-top" alt="STEM" />
+          <div class="card-body text-center">
+            <h5 class="card-title">STEM</h5>
+            <p class="card-text text-secondary">
+              We teach learners the latest technology that inspires interest in science, engineering, and math.
+            </p>
+            <a href="#" class="learn-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 course-card border-0 shadow-sm">
+          <img src="DSC_9041.JPG" class="card-img-top" alt="Language" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Language</h5>
+            <p class="card-text text-secondary">
+              We create immersive experiences to boost language learning and cultural appreciation.
+            </p>
+            <a href="#" class="learn-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arts -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 course-card border-0 shadow-sm">
+          <img src="DSC_9460.JPG" class="card-img-top" alt="Arts" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Arts</h5>
+            <p class="card-text text-secondary">
+              Our arts program nurtures creativity through drawing, crafts, and performance.
+            </p>
+            <a href="#" class="learn-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Music -->
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card h-100 course-card border-0 shadow-sm">
+          <img src="DSC_9129.JPG" class="card-img-top" alt="Music" />
+          <div class="card-body text-center">
+            <h5 class="card-title">Music</h5>
+            <p class="card-text text-secondary">
+              Explore instruments, vocals, and rhythm in our dynamic music sessions with expert tutors.
+            </p>
+            <a href="#" class="learn-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

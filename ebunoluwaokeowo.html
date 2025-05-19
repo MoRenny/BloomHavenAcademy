@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ebunoluwa Okeowo</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      color: #0a0a0a;
+      overflow: hidden; /* prevent scroll */
+      height: 100vh;
+      transition: background-color 1s ease;
+    }
+.name-text {
+  font-family: 'DM Serif Display', serif;
+}
+
+.details, .bio {
+  font-family: 'Open Sans', sans-serif;
+}
+
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #0a0a0a;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: white;
+  position: relative;
+  
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 3px; /* border thickness */
+  background: linear-gradient(135deg, #ff8a00, #e52e71, #9b00ff, #00c3ff);
+  background-size: 600% 600%;
+  animation: borderGradient 10s ease infinite;
+  z-index: 9998;
+  pointer-events: none;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+@keyframes borderGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    #mainContent {
+      display: none;
+    }
+
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: inherit;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .nav-left, .nav-year {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #0a0a0a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-right {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: inherit;
+        padding: 1rem;
+      }
+
+      .nav-right.show {
+        display: flex;
+      }
+
+      
+    }
+
+    main {
+      height: 100vh;
+      padding: 5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      box-sizing: border-box;
+    }
+
+    .intro-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .name-text {
+      font-size: 2rem;
+      font-weight: 900;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+    }
+
+    .bio {
+      font-size: 1rem;
+      max-width: 600px;
+      color: #333;
+      height: 1.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.1em solid #333;
+      animation: blink-caret 0.8s step-end infinite;
+      visibility: hidden;
+    }
+    .bio, .details {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+   line-height: 1.6;
+}
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #333 }
+    }
+
+    .bio-image-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .profile-img img {
+      width: 300px;
+      max-width: 90vw;
+      border-radius: 12px;
+      margin: 0;
+      padding: 0;
+      display: block;
+      transition: transform 0.6s ease, opacity 0.4s ease;
+      animation: fadeIn 1s ease-in;
+    }
+.profile-img img {
+  width: 320px;
+  max-width: 90vw;
+  border-radius: 20px;
+  box-shadow: 10px 28px 24px rgba(0, 0, 0, 0.15);
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+.profile-img img:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Or use pointer for a clickable feel */
+}
+
+    .action-button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #0a0a0a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .action-button:hover {
+      transform: scale(1.05);
+    }
+    
+
+   
+
+    .details {
+        animation: fadeInUp 1.5s ease-in-out;
+  margin-top: 0rem;
+  max-width: 1500px;
+ 
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #000000;
+ 
+  border-radius: 22px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+ 
+  transition: opacity 0.5s ease;
+  font-family: 'Georgia', serif;
+}
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+      
+    }
+    .action-button.animate {
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+  </style>
+
+</head>
+<body id="body">
+  <div id="loader">Loading...</div>
+
+  <div id="mainContent">
+    <header>
+      <div class="nav-left">morenike ©</div>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <nav class="nav-right" id="mobileMenu">
+        <a href="#work" class="nav-link">WORK</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#services" class="nav-link">SERVICES</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
+      </nav>
+      <div class="nav-year">© 2025</div>
+    </header>
+
+    <main id="work">
+      <div class="text-container">
+        <div class="intro-text">HI! THERE, I'M</div>
+        <div class="name-text">EBUNOLUWA OKEOWO</div>
+        <h1>and</h1>
+        <div class="bio-image-group">
+          <p class="bio" id="bioText"></p>
+          
+          <div class="profile-img">
+            <img id="profileImg" src="" alt="Profile image">
+          </div>
+        </div>
+      </div>
+      
+      <div class="details" id="detailsBox"></div>
+      <a href="#" class="action-button" id="bioLink">Learn More</a> 
+      
+    </main>
+  </div>
+
+  <audio id="bgMusic" autoplay muted loop>
+  <source src="Pachelbel - Canon in D Major (Original Version).mp4" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+  <audio id="typeSound" src="https://assets.mixkit.co/sfx/download/mixkit-typewriter-soft-1362.wav" preload="auto"></audio>
+
+  <script>
+    const roles = [
+
+    {
+        text: "I am an Educator.",
+        image: "BI200136.jpg",
+        link: "violinist.html",
+        description: "As an educator, I’m passionate about shaping young minds, especially through technology and the arts. My mission in education in Nigeria is to focus on the aspect everyone seems to neglect. Currently, I run Bloom Haven Academy, a school where children can get the opportunity to fully explore their full potentials.",
+        color: "#f3f1ed",
+        buttonText: "Check out Bloom Haven Academy",
+      } ,
+
+      {
+        text: "I am an Engineer.",
+        image: "engine.jpg",
+        link: "#",
+        description: "I am a COREN Certified Engineer with a Masters degree in Electronics and Communication Engineering. I enjoy solving problems and Engineering challenges me to think logically, solve problems, and innovate constantly. I’m driven by the desire to create a better future through technology, As an engineer, I design, develop, and optimize systems to solve real-world problems using technology and innovation.",
+        color: "#eef2f3",
+        buttonText: "Explore Engineering",
+      },
+      {
+        text: "I am a Violinist.",
+        image: "violinM.jpg",
+        link: "#",
+        description: "The Violin is such a beautiful instrument I picked uo . I also teach kids how to play the violin and many other instrument. I have been priviledged to play the violin at several concerts and ministrations. Although classically trained as a violinist, I've recently started trying my hands on Contemporary music and that has been going on well. I am a Violin 1 player with the TMC Orchestra Kaduna. You can check out some of my videos and pictures by clicking below.",
+        color: "#d9e4f5",
+        buttonText: "Watch me play!",
+      },
+
+      {
+        text: "I am a Singer.",
+        image: "singg.jpg",
+        link: "#",
+        description: "I am a classically trained singer with a passion for expressive, emotionally rich performance. Singing for me goes beyond the sound, it is not just a talent — it's my form of expression, literally my escape. I joined the choir in my church as a teenager and throughout the years, I've belonged to several choirs. I've also been priviledged to take various solos at different concerts. I currently sing soprano with the Melharmonic Chorale Kaduna. ",
+        color: "#f0f5f1",
+        buttonText: "Songs coming soon",
+      },
+
+      
+
+      {
+        text: "I am a Tennis Player.",
+        image: "tennis.jpg",
+        link: "#",
+        description: "I absolutely love playing tennis. I've always been interested in this sport but I actually started really playing recently and it has been a beautiful ride. I enjoy it so much, Tennis gives me an outlet, and helps to increase my ability to focus, and as an introvert, tennis really helps me to socialize. ",
+        color: "#ffffff",
+        buttonText: "Click for some pictures!",
+      },
+
+      {
+        text: "I am a an upcoming Tech sis.",
+        image: "tech.jpeg",
+        link: "port.html",
+        description: "I mean, I built this page naww, and I can as well build yours, wink wink. ",
+        color: " #fceae8",
+        buttonText: "Check out my portfolio!",
+      }
+    ];
+
+    let index = 0;
+    let typingTimeout;
+    let typingInterval;
+    const bioText = document.getElementById('bioText');
+    const profileImg = document.getElementById('profileImg');
+    const bioLink = document.getElementById('bioLink');
+    const detailsBox = document.getElementById('detailsBox');
+    const body = document.getElementById('body');
+    const typeSound = document.getElementById('typeSound');
+    const mainContent = document.getElementById('mainContent');
+    const loader = document.getElementById('loader');
+
+    function typeText(text, callback) {
+      clearTimeout(typingTimeout);
+      clearInterval(typingInterval);
+      bioText.textContent = '';
+      bioText.style.visibility = 'visible';
+
+      let i = 0;
+      typingInterval = setInterval(() => {
+        if (i < text.length) {
+          bioText.textContent += text.charAt(i);
+          try {
+            typeSound.currentTime = 0;
+            typeSound.play();
+          } catch (e) {}
+          i++;
+        } else {
+          clearInterval(typingInterval);
+          if (callback) callback();
+        }
+      }, 80);
+    }
+
+    function updateContent() {
+      index = (index + 1) % roles.length;
+      const role = roles[index];
+
+      body.style.backgroundColor = role.color;
+      profileImg.style.opacity = 0;
+      setTimeout(() => {
+        profileImg.src = role.image;
+        profileImg.style.opacity = 1;
+      }, 400);
+
+      bioLink.href = role.link;
+bioLink.textContent = role.buttonText;
+
+      detailsBox.style.opacity = 0;
+      setTimeout(() => {
+        detailsBox.textContent = role.description;
+        detailsBox.style.opacity = 1;
+      }, 500);
+
+      typeText(role.text);
+      bioLink.classList.remove('animate');
+void bioLink.offsetWidth; // trigger reflow
+bioLink.classList.add('animate');
+
+    }
+
+    window.addEventListener('load', () => {
+      const role = roles[0];
+      body.style.backgroundColor = role.color;
+      profileImg.src = role.image;
+      bioLink.href = role.link;
+      detailsBox.textContent = role.description;
+      bioLink.textContent = role.buttonText;
+
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        mainContent.style.display = 'block';
+        typeText(role.text, () => {
+          setInterval(updateContent, 8000);
+        });
+      }, 1000);
+    });
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('show');
+      
+    });
+  </script>
+</body>
+</html>

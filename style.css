@@ -43,9 +43,10 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
-            background: linear-gradient(45deg, #EEBBD5  0%, #9F7E6A 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: linear-gradient(90deg, #5f0b74, #bf7ead, #cd49a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
             
         }
 
